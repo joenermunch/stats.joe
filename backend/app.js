@@ -1,0 +1,21 @@
+var express = require("express");
+const bodyParser = require("body-parser");
+var path = require("path");
+
+var app = express();
+const apiRouter = require("./routes/api");
+const PORT = process.env.PORT;
+
+app.use(bodyParser.json());
+
+app.use(apiRouter);
+//test
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "build")));
+app.get("/*", function(req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html")); //;
+});
+
+app.listen(PORT, console.log(`Listening on PORT ${PORT}`));
+
+module.exports = app;
