@@ -46,7 +46,8 @@ export class App extends Component {
       allowTaint: true,
       useCORS: true,
       scrollX: 0,
-      scrollY: 0
+      scrollY: 0,
+      scale: 3
     }).then(canvas => {
       var a = document.createElement("a");
 
@@ -118,6 +119,27 @@ export class App extends Component {
             </div>
           </div>
         </div>
+        <footer>
+          <p className="footer-text">
+            made with <span className="heart">❤️</span> and React by{" "}
+            <a
+              className="github"
+              target="_BLANK"
+              href="https://github.com/joenermunch"
+            >
+              joener münch
+            </a>
+          </p>
+          <p>
+            <a
+              className="source"
+              target="_BLANK"
+              href="https://github.com/joenermunch/stats.joe"
+            >
+              source code
+            </a>
+          </p>
+        </footer>
       </div>
     );
   }
