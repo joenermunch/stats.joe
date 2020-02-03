@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import axios from "axios";
 import "./style.css";
 import html2canvas from "html2canvas";
@@ -15,7 +15,7 @@ export class App extends Component {
 
   callAPI = async e => {
     e.preventDefault();
-    this.setState({ loading: true });
+    this.setState({loading: true});
     const response = await axios.post("/api/data", {
       username: this.state.username
     });
@@ -44,7 +44,9 @@ export class App extends Component {
   makeImage = async () => {
     await html2canvas(document.querySelector("#capture"), {
       allowTaint: true,
-      useCORS: true
+      useCORS: true,
+      scrollX: 0,
+      scrollY: 0
     }).then(canvas => {
       var a = document.createElement("a");
 
@@ -58,7 +60,11 @@ export class App extends Component {
 
   renderDownload = () => {
     if (this.state.download === true) {
-      return <button onClick={this.makeImage}>Download</button>;
+      return (
+        <button className="download-button" onClick={this.makeImage}>
+          Download
+        </button>
+      );
     } else return <></>;
   };
 
@@ -67,7 +73,7 @@ export class App extends Component {
       return this.state.stats.map(artist => {
         return (
           <div
-            style={{ background: `url(${artist.image})` }}
+            style={{background: `url(${artist.image})`}}
             key={artist.image}
             className="image-item"
           >
@@ -84,33 +90,34 @@ export class App extends Component {
 
   renderLoading = () => {
     if (this.state.loading === true) {
-      return (
-        <div className="loading">
-          <p>Loading...</p>
-        </div>
-      );
-    } else return <></>;
+      return <p className="loading">Loading...</p>;
+    } else return this.renderDownload();
   };
 
   render() {
     return (
       <div className="main-container">
-        <form onSubmit={e => this.callAPI(e)}>
-          <input
-            type="text"
-            onChange={e => this.setState({ username: e.target.value })}
-          />
-          <button className="submit-button" onClick={this.callAPI}>
-            Get Images
-          </button>
-          {this.renderLoading()}
-        </form>
-        <div className="image-container">
-          <div className="image-box" id="capture">
-            {this.renderImages()}
+        <header>
+          <form onSubmit={e => this.callAPI(e)}>
+            <h1 className="title">stats.joe</h1>
+            <input
+              placeholder="Last.FM username"
+              type="text"
+              onChange={e => this.setState({username: e.target.value})}
+            />
+            <button className="submit-button" onClick={this.callAPI}>
+              Generate collage
+            </button>
+            <div className="result">{this.renderLoading()}</div>
+          </form>
+        </header>
+        <div className="image-main">
+          <div className="image-container">
+            <div className="image-box" id="capture">
+              {this.renderImages()}
+            </div>
           </div>
         </div>
-        <div className="result">{this.renderDownload()}</div>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Heebo&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Contrail+One&display=swap");
 *,
 *::before,
 *::after {
@@ -15,6 +16,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -29,9 +34,41 @@
   background-color: white;
   display: -ms-grid;
   display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-grid-columns: 174px 174px 174px;
       grid-template-columns: 174px 174px 174px;
   grid-auto-rows: 174px;
+}
+
+@media only screen and (max-width: 800px) {
+  .image-main {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .image-container {
+    width: 261px;
+    height: 261px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .image-box {
+    width: 261px;
+    height: 261px;
+    -ms-grid-columns: 87px 87px 87px;
+        grid-template-columns: 87px 87px 87px;
+    grid-auto-rows: 87px;
+  }
 }
 
 .loading {
@@ -41,7 +78,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: darkred;
+  color: #ff0000;
   margin-top: 15px;
 }
 
@@ -49,6 +86,15 @@
 .image {
   width: 174px;
   height: 174px;
+}
+
+@media only screen and (max-width: 800px) {
+  .image-item,
+  .image {
+    width: 87px;
+    height: 87px;
+    background-size: cover !important;
+  }
 }
 
 .image-item {
@@ -86,25 +132,26 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
 }
 
-.result button {
-  width: 100px;
+.download-button {
+  width: 200px;
   height: 30px;
   border: none;
   border-radius: 30px;
-  background-color: darkred;
+  background-color: #fa163f;
   color: white;
   outline: none;
-  margin-top: 35px;
+  margin-top: 15px;
 }
 
-.result button:hover {
+.download-button:hover {
   cursor: pointer;
-}
-
-.result:first-child {
-  background-color: red;
+  background-color: #df0d34;
 }
 
 .stats-container {
@@ -113,21 +160,16 @@
 }
 
 .main-container {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 2fr;
+      grid-template-columns: 1fr 2fr;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 30px;
 }
 
 .main-container input {
@@ -142,17 +184,18 @@
 }
 
 .main-container .submit-button {
-  width: 100px;
+  width: 200px;
   height: 30px;
   border: none;
   border-radius: 30px;
-  background-color: darkred;
+  background-color: #fa163f;
   color: white;
   outline: none;
 }
 
 .main-container .submit-button:hover {
   cursor: pointer;
+  background-color: #df0d34;
 }
 
 form {
@@ -169,5 +212,91 @@ form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+header {
+  background-color: #252525;
+  height: 100vh;
+  width: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .title {
+  color: #fa163f;
+  font-family: "Contrail One", cursive;
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+@media only screen and (max-width: 800px) {
+  .main-container {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .main-container input {
+    margin: 0;
+    margin-left: 5px;
+    width: 150px;
+    margin-bottom: 10px;
+  }
+  .download-button {
+    width: 150px;
+  }
+  header {
+    width: 100%;
+    height: 220px;
+    grid-row: 1/-1;
+    grid-column: 1/-1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  header .logo-box {
+    margin-right: 10px;
+  }
+  .title {
+    font-size: 30px !important;
+  }
+  .stats {
+    font-size: 8px !important;
+  }
+  .plays,
+  .album {
+    font-size: 8px !important;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .submit-button {
+    width: 150px !important;
+  }
 }
 /*# sourceMappingURL=style.css.map */

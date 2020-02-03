@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Heebo&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Contrail+One&display=swap");
 
 *,
 *::before,
@@ -14,6 +15,7 @@
   margin-top: 35px;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -23,14 +25,38 @@
   height: 522px;
   background-color: white;
   display: grid;
+  justify-content: center;
+  align-items: center;
   grid-template-columns: 174px 174px 174px;
   grid-auto-rows: 174px;
+}
+
+@media only screen and (max-width: 800px) {
+  .image-main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .image-container {
+    width: 261px;
+    height: 261px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .image-box {
+    width: 261px;
+    height: 261px;
+    grid-template-columns: 87px 87px 87px;
+    grid-auto-rows: 87px;
+  }
 }
 
 .loading {
   display: flex;
   justify-content: center;
-  color: darkred;
+  color: #ff0000;
   margin-top: 15px;
 }
 
@@ -38,6 +64,15 @@
 .image {
   width: 174px;
   height: 174px;
+}
+
+@media only screen and (max-width: 800px) {
+  .image-item,
+  .image {
+    width: 87px;
+    height: 87px;
+    background-size: cover !important;
+  }
 }
 
 .image-item {
@@ -67,25 +102,24 @@
 .result {
   display: flex;
   justify-content: center;
-
-  button {
-    width: 100px;
-    height: 30px;
-    border: none;
-    border-radius: 30px;
-    background-color: darkred;
-    color: white;
-    outline: none;
-    margin-top: 35px;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
+  align-items: center;
+  height: 30px;
 }
 
-.result:first-child {
-  background-color: red;
+.download-button {
+  width: 200px;
+  height: 30px;
+  border: none;
+  border-radius: 30px;
+  background-color: #fa163f;
+  color: white;
+  outline: none;
+  margin-top: 15px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #df0d34;
+  }
 }
 
 .stats-container {
@@ -94,12 +128,10 @@
 }
 
 .main-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   justify-content: center;
   align-items: center;
-  padding: 30px;
 
   input {
     margin-bottom: 35px;
@@ -113,16 +145,17 @@
   }
 
   .submit-button {
-    width: 100px;
+    width: 200px;
     height: 30px;
     border: none;
     border-radius: 30px;
-    background-color: darkred;
+    background-color: #fa163f;
     color: white;
     outline: none;
 
     &:hover {
       cursor: pointer;
+      background-color: #df0d34;
     }
   }
 }
@@ -132,4 +165,73 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+header {
+  background-color: #252525;
+  height: 100vh;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .title {
+    color: #fa163f;
+    font-family: "Contrail One", cursive;
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .main-container {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    input {
+      margin: 0;
+      margin-left: 5px;
+      width: 150px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .download-button {
+    width: 150px;
+  }
+
+  header {
+    width: 100%;
+    height: 220px;
+    grid-row: 1/-1;
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: row;
+
+    .logo-box {
+      margin-right: 10px;
+    }
+  }
+
+  .title {
+    font-size: 30px !important;
+  }
+
+  .stats {
+    font-size: 8px !important;
+  }
+  .plays,
+  .album {
+    font-size: 8px !important;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .submit-button {
+    width: 150px !important;
+  }
 }
