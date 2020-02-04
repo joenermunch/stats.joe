@@ -9,8 +9,13 @@
           box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   position: relative;
+  min-height: 100%;
 }
 
 .image-container {
@@ -47,7 +52,7 @@ body {
 @media only screen and (max-width: 800px) {
   .image-main {
     width: 100%;
-    height: 90vh;
+    min-height: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -68,7 +73,8 @@ body {
   }
   .image-container {
     width: 348px;
-    height: 348px;
+    height: 100%;
+    margin-top: 50px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -76,6 +82,12 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 
@@ -229,6 +241,7 @@ footer a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  min-height: 100%;
 }
 
 .main-container input {
