@@ -9,13 +9,17 @@
   box-sizing: border-box;
 }
 
+body {
+  position: relative;
+}
+
 .image-container {
   width: 100%;
   height: 522px;
-  margin-top: 35px;
+
 
   display: flex;
-  flex-direction: column;
+
   justify-content: center;
   align-items: center;
 }
@@ -34,13 +38,24 @@
 @media only screen and (max-width: 800px) {
   .image-main {
     width: 100%;
+    height: 90vh;
+
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .text-tweet {
+    margin-bottom: 100px;
   }
 
   .image-container {
     width: 348px;
     height: 348px;
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -107,6 +122,13 @@
   height: 30px;
 }
 
+.text-tweet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .download-button {
   width: 200px;
   height: 30px;
@@ -139,6 +161,7 @@
     font-family: "Heebo", sans-serif;
     color: white;
     position: absolute;
+
     left: 20px;
     display: flex;
     justify-content: center;
@@ -154,7 +177,6 @@
     a {
       color: inherit;
     }
-
   }
 
   input {
@@ -209,8 +231,24 @@ header {
   }
 }
 
-@media only screen and (max-width: 800px) {
+.text-container {
+  width: 300px;
+  text-align: center;
+  font-family: "Heebo", sans-serif;
+  font-weight: 700;
+  color: #696969;
+  font-size: 12px;
+  margin: 25px;
 
+}
+
+@media only screen and (max-width: 800px) {
+  .text-container {
+    width: 320px;
+    font-size: 12px;
+    margin: 10px;
+    margin-bottom: 15px;
+  }
 
   .main-container {
     justify-content: center;
@@ -220,7 +258,6 @@ header {
     flex-direction: column;
     padding: 0;
     margin: 0;
-
 
     footer {
       font-family: "Heebo", sans-serif;
@@ -234,12 +271,12 @@ header {
       color: white;
       left: 0;
       bottom: 0;
-      height: 10vh;
+      height: 8vh;
+      position: absolute;
 
       a {
         color: inherit;
       }
-
     }
 
     input {
@@ -256,7 +293,7 @@ header {
 
   header {
     width: 100%;
-    height: 220px;
+    height: 250px;
     grid-row: 1/-1;
     grid-column: 1/-1;
     display: flex;
@@ -268,7 +305,7 @@ header {
   }
 
   .title {
-    font-size: 30px !important;
+    font-size: 40px !important;
   }
 
   .stats {

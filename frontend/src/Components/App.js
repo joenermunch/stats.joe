@@ -10,7 +10,8 @@ export class App extends Component {
     images: null,
     stats: null,
     loading: false,
-    download: false
+    download: false,
+    tweet: null
   };
 
   callAPI = async e => {
@@ -39,6 +40,14 @@ export class App extends Component {
       loading: false,
       download: true
     });
+
+    const mappedArtists = this.state.stats.map(artist => {
+      return `${artist.artist} (${artist.playcount})`;
+    });
+
+    this.setState({
+      tweet: mappedArtists.join(`, `)
+    });
   };
 
   makeImage = async () => {
@@ -46,8 +55,7 @@ export class App extends Component {
       allowTaint: true,
       useCORS: true,
       scrollX: 0,
-      scrollY: 0,
-      scale: 3
+      scrollY: 0
     }).then(canvas => {
       var a = document.createElement("a");
 
@@ -89,6 +97,47 @@ export class App extends Component {
     } else return <></>;
   };
 
+  renderTopText = () => {
+    if (this.state.stats) {
+      return (
+        <div className="text-container">
+          My top artists of the week: {this.state.tweet} #stats.joe
+        </div>
+      );
+    } else return <></>;
+  };
+
+  renderTweet = () => {
+    if (this.state.stats) {
+      window.twttr = (function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+          t._e.push(f);
+        };
+
+        return t;
+      })(document, "script", "twitter-wjs");
+
+      return (
+        <a
+          class="twitter-share-button"
+          href={`https://twitter.com/intent/tweet?text=My top artists of the week: ${this.state.tweet} #joe.io`}
+        >
+          Tweet
+        </a>
+      );
+    } else return <></>;
+  };
+
   renderLoading = () => {
     if (this.state.loading === true) {
       return <p className="loading">Loading...</p>;
@@ -117,9 +166,13 @@ export class App extends Component {
             <div className="image-box" id="capture">
               {this.renderImages()}
             </div>
+            <div className="text-tweet">
+              {this.renderTopText()}
+              {this.renderTweet()}
+            </div>
           </div>
         </div>
-        <footer>
+        <footer className="header-footer">
           <p className="footer-text">
             made with <span className="heart">❤️</span> and React by{" "}
             <a

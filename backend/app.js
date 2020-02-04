@@ -1,11 +1,13 @@
 var express = require("express");
 const bodyParser = require("body-parser");
 var path = require("path");
+const cors = require("cors");
 
 var app = express();
 const apiRouter = require("./routes/api");
 const PORT = process.env.PORT || 5000;
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use(apiRouter);

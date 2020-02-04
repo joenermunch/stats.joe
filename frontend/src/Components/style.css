@@ -9,17 +9,16 @@
           box-sizing: border-box;
 }
 
+body {
+  position: relative;
+}
+
 .image-container {
   width: 100%;
   height: 522px;
-  margin-top: 35px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -48,16 +47,35 @@
 @media only screen and (max-width: 800px) {
   .image-main {
     width: 100%;
+    height: 90vh;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 0;
+  }
+  .text-tweet {
+    margin-bottom: 100px;
   }
   .image-container {
     width: 348px;
     height: 348px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 
@@ -136,6 +154,22 @@
       -ms-flex-align: center;
           align-items: center;
   height: 30px;
+}
+
+.text-tweet {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .download-button {
@@ -266,7 +300,23 @@ header .title {
   margin-bottom: 15px;
 }
 
+.text-container {
+  width: 300px;
+  text-align: center;
+  font-family: "Heebo", sans-serif;
+  font-weight: 700;
+  color: #696969;
+  font-size: 12px;
+  margin: 25px;
+}
+
 @media only screen and (max-width: 800px) {
+  .text-container {
+    width: 320px;
+    font-size: 12px;
+    margin: 10px;
+    margin-bottom: 15px;
+  }
   .main-container {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -306,7 +356,8 @@ header .title {
     color: white;
     left: 0;
     bottom: 0;
-    height: 10vh;
+    height: 8vh;
+    position: absolute;
   }
   .main-container footer a {
     color: inherit;
@@ -322,7 +373,7 @@ header .title {
   }
   header {
     width: 100%;
-    height: 220px;
+    height: 250px;
     grid-row: 1/-1;
     grid-column: 1/-1;
     display: -webkit-box;
@@ -337,7 +388,7 @@ header .title {
     margin-right: 10px;
   }
   .title {
-    font-size: 30px !important;
+    font-size: 40px !important;
   }
   .stats {
     font-size: 8px !important;
