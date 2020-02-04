@@ -146,29 +146,31 @@ export class App extends Component {
 
   render() {
     return (
-      <div className="main-container">
-        <header>
-          <form onSubmit={e => this.callAPI(e)}>
-            <h1 className="title">stats.joe</h1>
-            <input
-              placeholder="Last.FM username"
-              type="text"
-              onChange={e => this.setState({username: e.target.value})}
-            />
-            <button className="submit-button" onClick={this.callAPI}>
-              Generate collage
-            </button>
-            <div className="result">{this.renderLoading()}</div>
-          </form>
-        </header>
-        <div className="image-main">
-          <div className="image-container">
-            <div className="image-box" id="capture">
-              {this.renderImages()}
-            </div>
-            <div className="text-tweet">
-              {this.renderTopText()}
-              {this.renderTweet()}
+      <div>
+        <div className="main-container">
+          <header>
+            <form onSubmit={e => this.callAPI(e)}>
+              <h1 className="title">stats.joe</h1>
+              <input
+                placeholder="Last.FM username"
+                type="text"
+                onChange={e => this.setState({username: e.target.value})}
+              />
+              <button className="submit-button" onClick={this.callAPI}>
+                Generate collage
+              </button>
+              <div className="result">{this.renderLoading()}</div>
+            </form>
+          </header>
+          <div className="image-main">
+            <div className="image-container">
+              <div className="image-box" id="capture">
+                {this.renderImages()}
+              </div>
+              <div className="text-tweet">
+                {this.renderTopText()}
+                {this.renderTweet()}
+              </div>
             </div>
           </div>
         </div>
