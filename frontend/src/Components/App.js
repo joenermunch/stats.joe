@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import axios from "axios";
 import "./style.css";
 import html2canvas from "html2canvas";
-import canvasToImage from "canvas-to-image";
 
 export class App extends Component {
   state = {
@@ -51,18 +50,27 @@ export class App extends Component {
   };
 
   makeImage = async () => {
+    window.scrollTo(0, 0);
+
     await html2canvas(document.querySelector("#capture"), {
       allowTaint: true,
       useCORS: true,
       scrollX: 0,
       scrollY: 0
     }).then(canvas => {
+      var ctx = canvas.getContext("2d");
+      ctx.webkitImageSmoothingEnabled = false;
+      ctx.mozImageSmoothingEnabled = false;
+      ctx.imageSmoothingEnabled = false;
+      ctx.imageSmoothingQuality = "high";
+      ctx.scale(3, 3);
+
       var a = document.createElement("a");
 
       a.href = canvas
-        .toDataURL("image/jpeg")
-        .replace("image/jpeg", "image/octet-stream");
-      a.download = "mytopalbums.jpg";
+        .toDataURL("image/png")
+        .replace("image/png", "image/octet-stream");
+      a.download = "mytopalbums.png";
       a.click();
     });
   };
@@ -149,8 +157,9 @@ export class App extends Component {
       <div>
         <div className="main-container">
           <header>
+          <h1 className="title">stats.joe</h1>
             <form onSubmit={e => this.callAPI(e)}>
-              <h1 className="title">stats.joe</h1>
+             
               <input
                 placeholder="Last.FM username"
                 type="text"
@@ -161,12 +170,40 @@ export class App extends Component {
               </button>
               <div className="result">{this.renderLoading()}</div>
             </form>
+            <footer className="header-footer">
+              <p className="footer-text">
+                made with{" "}
+                <span className="heart" role="img">
+                  ❤️
+                </span>{" "}
+                and React by{" "}
+                <a
+                  className="github"
+                  target="_BLANK"
+                  rel="noopener noreferrer"
+                  href="https://github.com/joenermunch"
+                >
+                  joener münch
+                </a>
+              </p>
+              <p>
+                <a
+                  className="source"
+                  target="_BLANK"
+                  rel="noopener noreferrer"
+                  href="https://github.com/joenermunch/stats.joe"
+                >
+                  source code
+                </a>
+              </p>
+            </footer>
           </header>
           <div className="image-main">
             <div className="image-container">
               <div className="image-box" id="capture">
                 {this.renderImages()}
               </div>
+
               <div className="text-tweet">
                 {this.renderTopText()}
                 {this.renderTweet()}
@@ -174,12 +211,17 @@ export class App extends Component {
             </div>
           </div>
         </div>
-        <footer className="header-footer">
+        <footer className="bottom-footer">
           <p className="footer-text">
-            made with <span className="heart">❤️</span> and React by{" "}
+            made with{" "}
+            <span className="heart" role="img">
+              ❤️
+            </span>{" "}
+            and React by{" "}
             <a
               className="github"
               target="_BLANK"
+              rel="noopener noreferrer"
               href="https://github.com/joenermunch"
             >
               joener münch
@@ -189,6 +231,7 @@ export class App extends Component {
             <a
               className="source"
               target="_BLANK"
+              rel="noopener noreferrer"
               href="https://github.com/joenermunch/stats.joe"
             >
               source code
